@@ -408,8 +408,8 @@ db_writer_client: Optional[HTTPHandler] = None
 def _get_bearer_token(
     api_key: str,
 ):
-    if api_key.startswith("Bearer "):  # ensure Bearer token passed in
-        api_key = api_key.replace("Bearer ", "")  # extract the token
+    if api_key.lower().startswith("bearer "):  # ensure Bearer token passed in
+        api_key = api_key[7:]  # extract the token, same as len("Bearer ")
     else:
         api_key = ""
     return api_key
